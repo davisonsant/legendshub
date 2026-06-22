@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+  body { background: #05070d; color: #fff; font-family: 'Inter', sans-serif; }
+  #root { width: 100%; height: 100vh; overflow: hidden; position: relative; }
+}
+
+@layer components {
+  /* Modal backdrop */
+  .modal-backdrop {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
+    background: rgba(0,0,0,0.82);
+    backdrop-filter: blur(8px);
+  }
+
+  /* Modal card */
+  .modal-card {
+    @apply relative rounded-2xl w-full;
+    background: linear-gradient(160deg, #12151f 0%, #0d1020 100%);
+    border: 1px solid rgba(255,255,255,0.09);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(97,95,255,0.08);
+  }
+
+  /* Scrollbar */
+  .custom-scroll::-webkit-scrollbar { width: 4px; }
+  .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+  .custom-scroll::-webkit-scrollbar-thumb { background: rgba(97,95,255,0.3); border-radius: 4px; }
+
+  /* Input */
+  .lh-input {
+    @apply w-full rounded-lg text-white text-sm outline-none transition-colors;
+    padding: 11px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    font-family: 'Inter', sans-serif;
+  }
+  .lh-input::placeholder { color: rgba(255,255,255,0.25); }
+  .lh-input:focus { border-color: #615fff; background: rgba(97,95,255,0.08); }
+
+  /* Button primary */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-lg font-display font-bold uppercase tracking-wider transition-all cursor-pointer border-none;
+    padding: 11px 24px;
+    background: #615fff;
+    color: #fff;
+    font-size: 12px;
+    box-shadow: 0 6px 20px rgba(97,95,255,0.45);
+  }
+  .btn-primary:hover { background: #7c7aff; box-shadow: 0 8px 26px rgba(97,95,255,0.6); }
+
+  /* Button secondary */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-lg font-display font-bold uppercase tracking-wider transition-all cursor-pointer;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.25); }
+
+  /* Rating bar */
+  .rating-bar {
+    @apply flex items-center gap-2 text-xs;
+  }
+  .rating-bar-track {
+    @apply flex-1 h-1 rounded-full overflow-hidden;
+    background: rgba(255,255,255,0.1);
+  }
+  .rating-bar-fill {
+    @apply h-full rounded-full;
+    transition: width 0.3s ease;
+  }
+
+  /* Ed table */
+  .ed-table { @apply w-full border-collapse text-xs; }
+  .ed-table th { @apply text-left py-2 px-3; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .ed-table td { @apply py-2.5 px-3; border-bottom: 1px solid rgba(255,255,255,0.04); color: rgba(255,255,255,0.7); vertical-align: middle; }
+  .ed-table tr:hover td { background: rgba(255,255,255,0.03); }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Rajdhani', sans-serif; }
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #ffe066 0%, #c8a800 40%, #a87800 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-primary-gradient {
+    background: linear-gradient(135deg, #9b8fff, #615fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

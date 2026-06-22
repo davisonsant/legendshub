@@ -1,0 +1,146 @@
+import { useAppStore } from '@/store'
+
+const translations = {
+  pt: {
+    appName:        'LegendsHub',
+    tagline:        'Esports Manager',
+    heroTitle:      'Comande sua equipe rumo aos',
+    heroHighlight:  'Worlds',
+    heroSub:        'Construa um elenco, vença split após split e leve seu time pro topo do LoL competitivo.',
+    newCareer:      'Nova Carreira',
+    nav: { play:'Jogar', career:'Carreira', editor:'Editor de Jogo', settings:'Configurações' },
+    lang: { badge:'Idiomas', title:'Escolha seu Idioma', sub:'Você pode trocar a qualquer momento em configurações.', confirm:'Confirmar' },
+    welcome: {
+      slide1: { title:'Bem-vindo ao LegendsHub', desc:'Você é o coach e manager. Construa uma dinastia no cenário competitivo de League of Legends — rumo ao topo do Worlds.' },
+      slide2: { title:'Comece uma carreira',     desc:'Escolha sua região, time e crie seu personagem. A campanha completa começa no setup.' },
+      slide3: { title:'Saves locais',            desc:'Salva até 6 carreiras paralelas. Exporte/importe para mover entre dispositivos.' },
+      slide4: { title:'Junte-se à comunidade',   desc:'Chat global, saves públicos para baixar, sugestões pro projeto. Conta gratuita.' },
+    },
+    skip:    'Pular',
+    next:    'Próximo',
+    start:   'Começar',
+    confirm: 'Confirmar',
+    cancel:  'Cancelar',
+    save:    'Salvar',
+    edit:    'Editar',
+    delete:  'Deletar',
+    add:     'Adicionar',
+    search:  'Buscar...',
+    login:   'Entrar',
+    signup:  'Criar Conta',
+  },
+  en: {
+    appName:        'LegendsHub',
+    tagline:        'Esports Manager',
+    heroTitle:      'Lead your team to the',
+    heroHighlight:  'Worlds',
+    heroSub:        'Build a roster, win split after split and take your team to the top of competitive LoL.',
+    newCareer:      'New Career',
+    nav: { play:'Play', career:'Career', editor:'Game Editor', settings:'Settings' },
+    lang: { badge:'Languages', title:'Choose your Language', sub:'You can change it anytime in settings.', confirm:'Confirm' },
+    welcome: {
+      slide1: { title:'Welcome to LegendsHub', desc:'You are the coach and manager. Build a dynasty in competitive League of Legends — all the way to Worlds.' },
+      slide2: { title:'Start a career',         desc:'Choose your region, team and create your character. The full campaign starts at setup.' },
+      slide3: { title:'Local saves',             desc:'Save up to 6 parallel careers. Export/import to move between devices.' },
+      slide4: { title:'Join the community',      desc:'Global chat, public saves to download, project suggestions. Free account.' },
+    },
+    skip: 'Skip', next: 'Next', start: 'Start', confirm: 'Confirm',
+    cancel: 'Cancel', save: 'Save', edit: 'Edit', delete: 'Delete',
+    add: 'Add', search: 'Search...', login: 'Login', signup: 'Sign Up',
+  },
+  es: {
+    appName: 'LegendsHub', tagline: 'Esports Manager',
+    heroTitle: 'Lleva tu equipo al', heroHighlight: 'Worlds',
+    heroSub: 'Construye una plantilla, gana split tras split y lleva tu equipo a la cima del LoL competitivo.',
+    newCareer: 'Nueva Carrera',
+    nav: { play:'Jugar', career:'Carrera', editor:'Editor de Juego', settings:'Configuración' },
+    lang: { badge:'Idiomas', title:'Elige tu idioma', sub:'Puedes cambiarlo en configuración.', confirm:'Confirmar' },
+    welcome: {
+      slide1: { title:'Bienvenido a LegendsHub', desc:'Eres el coach y manager. Construye una dinastía en LoL competitivo.' },
+      slide2: { title:'Empieza una carrera', desc:'Elige región, equipo y crea tu personaje.' },
+      slide3: { title:'Saves locales', desc:'Guarda hasta 6 carreras. Exporta/importa entre dispositivos.' },
+      slide4: { title:'Únete a la comunidad', desc:'Chat global, saves públicos. Cuenta gratuita.' },
+    },
+    skip: 'Omitir', next: 'Siguiente', start: 'Comenzar', confirm: 'Confirmar',
+    cancel: 'Cancelar', save: 'Guardar', edit: 'Editar', delete: 'Eliminar',
+    add: 'Añadir', search: 'Buscar...', login: 'Entrar', signup: 'Crear cuenta',
+  },
+  fr: {
+    appName: 'LegendsHub', tagline: 'Esports Manager',
+    heroTitle: 'Menez votre équipe aux', heroHighlight: 'Worlds',
+    heroSub: 'Construisez un effectif, gagnez split après split et menez votre équipe au sommet.',
+    newCareer: 'Nouvelle Carrière',
+    nav: { play:'Jouer', career:'Carrière', editor:'Éditeur de Jeu', settings:'Paramètres' },
+    lang: { badge:'Langues', title:'Choisissez votre langue', sub:'Vous pouvez le modifier dans les paramètres.', confirm:'Confirmer' },
+    welcome: {
+      slide1: { title:'Bienvenue sur LegendsHub', desc:'Vous êtes le coach et manager. Construisez une dynastie dans LoL compétitif.' },
+      slide2: { title:'Commencez une carrière', desc:'Choisissez région, équipe et créez votre personnage.' },
+      slide3: { title:'Sauvegardes locales', desc:'Jusqu\'à 6 carrières. Exportez/importez entre appareils.' },
+      slide4: { title:'Rejoignez la communauté', desc:'Chat global, sauvegardes publiques. Compte gratuit.' },
+    },
+    skip: 'Passer', next: 'Suivant', start: 'Commencer', confirm: 'Confirmer',
+    cancel: 'Annuler', save: 'Sauvegarder', edit: 'Modifier', delete: 'Supprimer',
+    add: 'Ajouter', search: 'Rechercher...', login: 'Connexion', signup: 'Créer un compte',
+  },
+  de: {
+    appName: 'LegendsHub', tagline: 'Esports Manager',
+    heroTitle: 'Führe dein Team zu den', heroHighlight: 'Worlds',
+    heroSub: 'Baue einen Kader auf, gewinne Split für Split und bringe dein Team an die Spitze.',
+    newCareer: 'Neue Karriere',
+    nav: { play:'Spielen', career:'Karriere', editor:'Spieleditor', settings:'Einstellungen' },
+    lang: { badge:'Sprachen', title:'Wähle deine Sprache', sub:'Du kannst sie in den Einstellungen ändern.', confirm:'Bestätigen' },
+    welcome: {
+      slide1: { title:'Willkommen bei LegendsHub', desc:'Du bist der Coach und Manager. Baue eine Dynastie im kompetitiven LoL auf.' },
+      slide2: { title:'Starte eine Karriere', desc:'Wähle Region, Team und erstelle deinen Charakter.' },
+      slide3: { title:'Lokale Speicherstände', desc:'Bis zu 6 Karrieren. Exportiere/Importiere zwischen Geräten.' },
+      slide4: { title:'Tritt der Community bei', desc:'Globaler Chat, öffentliche Speicherstände. Kostenloses Konto.' },
+    },
+    skip: 'Überspringen', next: 'Weiter', start: 'Starten', confirm: 'Bestätigen',
+    cancel: 'Abbrechen', save: 'Speichern', edit: 'Bearbeiten', delete: 'Löschen',
+    add: 'Hinzufügen', search: 'Suchen...', login: 'Anmelden', signup: 'Konto erstellen',
+  },
+  ja: {
+    appName: 'LegendsHub', tagline: 'Esports Manager',
+    heroTitle: 'チームを', heroHighlight: 'Worlds',
+    heroSub: 'ロスターを構築し、スプリットを勝ち抜き、競技LoLの頂点へ。',
+    newCareer: '新しいキャリア',
+    nav: { play:'プレイ', career:'キャリア', editor:'ゲームエディタ', settings:'設定' },
+    lang: { badge:'言語', title:'言語を選択', sub:'設定からいつでも変更できます。', confirm:'決定' },
+    welcome: {
+      slide1: { title:'LegendsHubへようこそ', desc:'あなたはコーチ兼マネージャーです。競技LoLの王朝を築きましょう。' },
+      slide2: { title:'キャリアを始める', desc:'地域、チームを選んでキャラクターを作成します。' },
+      slide3: { title:'ローカルセーブ', desc:'最大6つのキャリアを保存。デバイス間で移動可能。' },
+      slide4: { title:'コミュニティに参加', desc:'グローバルチャット、公開セーブ。無料アカウント。' },
+    },
+    skip: 'スキップ', next: '次へ', start: '開始', confirm: '決定',
+    cancel: 'キャンセル', save: '保存', edit: '編集', delete: '削除',
+    add: '追加', search: '検索...', login: 'ログイン', signup: 'アカウント作成',
+  },
+  ru: {
+    appName: 'LegendsHub', tagline: 'Esports Manager',
+    heroTitle: 'Веди свою команду на', heroHighlight: 'Worlds',
+    heroSub: 'Создай состав, выигрывай сплит за сплитом и доведи команду до вершины.',
+    newCareer: 'Новая карьера',
+    nav: { play:'Играть', career:'Карьера', editor:'Редактор игры', settings:'Настройки' },
+    lang: { badge:'Языки', title:'Выберите язык', sub:'Вы можете изменить его в настройках.', confirm:'Подтвердить' },
+    welcome: {
+      slide1: { title:'Добро пожаловать в LegendsHub', desc:'Ты тренер и менеджер. Построй династию в LoL.' },
+      slide2: { title:'Начни карьеру', desc:'Выбери регион, команду и создай персонажа.' },
+      slide3: { title:'Локальные сохранения', desc:'До 6 карьер. Экспорт/импорт между устройствами.' },
+      slide4: { title:'Присоединись к сообществу', desc:'Глобальный чат, публичные сохранения. Бесплатный аккаунт.' },
+    },
+    skip: 'Пропустить', next: 'Далее', start: 'Начать', confirm: 'Подтвердить',
+    cancel: 'Отмена', save: 'Сохранить', edit: 'Редактировать', delete: 'Удалить',
+    add: 'Добавить', search: 'Поиск...', login: 'Войти', signup: 'Создать аккаунт',
+  },
+}
+
+export type TranslationKey = typeof translations.pt
+export type LangCode = keyof typeof translations
+
+export function useT(): TranslationKey {
+  const lang = useAppStore((s) => s.settings.language) as LangCode
+  return translations[lang] ?? translations.pt
+}
+
+export { translations }
